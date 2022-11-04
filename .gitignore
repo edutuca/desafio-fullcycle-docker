@@ -1,5 +1,5 @@
-node_modules
-build
-npm-debug.log
-.env
-.DS_Store
+/node/node_modules
+/node/build
+/node/npm-debug.log
+/node/.env
+/node/.DS_Store
