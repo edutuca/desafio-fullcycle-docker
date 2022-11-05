@@ -3,3 +3,4 @@
 /node/npm-debug.log
 /node/.env
 /node/.DS_Store
+/mysql/data/*

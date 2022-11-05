@@ -3,7 +3,7 @@ version: '3.3'
 services:
   db:
     build:
-      context: mysql
+      context: ./mysql
     container_name: desafio-mysql
     environment:
        MYSQL_DATABASE: nodedb
@@ -16,22 +16,22 @@ services:
 
   node:
     build: 
-      context: node
+      context: ./node
     
     container_name: desafio-node
     entrypoint: dockerize -wait tcp://desafio-mysql:3306 -timeout 160s docker-entrypoint.sh
     command: node index.js
     tty: true
     volumes:
-      - ./node:/usr/src/app
+      - node-volume:/usr/src/app
     networks:
       - desafio-networks
     depends_on:
-      - db
+      - db      
 
   nginx:
     build:
-      context: nginx
+      context: ./nginx
     container_name: desafio-nginx
     ports:
       - 8080:80
@@ -46,4 +46,7 @@ services:
       
 networks:
    desafio-networks:
-      driver: bridge
+      driver: bridge   
+volumes:
+  node-volume:
+    driver: local   

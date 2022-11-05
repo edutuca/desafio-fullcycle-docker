@@ -11,11 +11,7 @@ const config = {
 const mysql = require("mysql");
 
 
-app.get('/teste',(req,res)=>{
-    res.send("<h1>Eduardo</h1>")
-})
-
-app.get('/mysql',(req,res)=>{
+app.get('/people',(req,res)=>{
 const connection = mysql.createConnection(config);
     connection.query('SELECT * FROM people', function (error, results, fields) {
         if (error)
